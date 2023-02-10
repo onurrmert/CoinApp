@@ -5,19 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coinapp.Adapter.MainAdapter
 import com.example.coinapp.Model.MarketsItem
+import com.example.coinapp.ViewModel.MainViewModel
 import com.example.coinapp.databinding.FragmentMainBinding
-import com.onurmert.retro4fitt.Retrofit1.ApiClient
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
 
     private lateinit var binding : FragmentMainBinding
+
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +35,23 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+
+        getCoin()
+    }
+
+    private fun getCoin(){
+
+        viewModel.getCoinList()
+
+        viewModel.coinList.observe(viewLifecycleOwner, Observer {
+            if (it.size > 0){
+                initRecycler(it)
+                binding.progressBar.visibility = View.GONE
+            }else{
+                binding.progressBar.visibility = View.VISIBLE
+            }
+        })
     }
 
     private fun initRecycler(coinList : List<MarketsItem>){
