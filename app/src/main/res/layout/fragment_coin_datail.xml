@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/img_1"
     tools:context=".View.CoinDatailFragment">
 
     <LinearLayout
@@ -39,20 +39,35 @@
             <TextView
                 android:id="@+id/textBaseAsset"
                 style="@style/textStyle"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:background="@drawable/recycler_background"
                 android:layout_gravity="left"
                 android:text="asset" />
 
             <TextView
                 android:id="@+id/textPriceUsd"
                 style="@style/textStyle"
+                android:layout_width="match_parent"
                 android:maxLength="15"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:background="@drawable/recycler_background"
                 android:layout_gravity="left"
                 android:text="price" />
 
             <TextView
                 android:id="@+id/textPricEur"
                 style="@style/textStyle"
+                android:layout_width="match_parent"
                 android:maxLength="14"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:background="@drawable/recycler_background"
                 android:layout_gravity="left"
                 android:text="euro" />
 
@@ -61,12 +76,22 @@
                 style="@style/textStyle"
                 android:textColor="#FF0000"
                 android:layout_gravity="left"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:layout_width="match_parent"
+                android:background="@drawable/recycler_background"
                 android:maxLength="20"
                 android:text="change" />
 
             <TextView
                 android:id="@+id/textUpdate"
                 style="@style/textStyle"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:background="@drawable/recycler_background"
                 android:layout_gravity="left"
                 android:text="update" />
         </LinearLayout>

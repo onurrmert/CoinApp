@@ -35,7 +35,7 @@ class SplashFragment : Fragment() {
     }
 
     suspend fun direciton(){
-        delay(0)
+        delay(1000)
         val direction = SplashFragmentDirections.actionSplashFragmentToMainFragment()
         Navigation.findNavController(requireView()).navigate(direction)
     }

@@ -67,7 +67,6 @@ class MainFragment : Fragment() {
         viewModel.coinList.observe(viewLifecycleOwner, Observer {
             if (it.size > 0){
                 initRecycler(it)
-                Toast.makeText(requireContext(),"Update at: " + it.get(0).updated_at.substring(0, 10), Toast.LENGTH_SHORT).show()
                 binding.progressBar.visibility = View.GONE
             }else{
                 binding.progressBar.visibility = View.VISIBLE
