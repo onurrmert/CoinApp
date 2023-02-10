@@ -45,19 +45,23 @@
             <TextView
                 android:id="@+id/textPriceUsd"
                 style="@style/textStyle"
+                android:maxLength="15"
                 android:layout_gravity="left"
                 android:text="price" />
 
             <TextView
                 android:id="@+id/textPricEur"
                 style="@style/textStyle"
+                android:maxLength="14"
                 android:layout_gravity="left"
                 android:text="euro" />
 
             <TextView
                 android:id="@+id/textChange"
                 style="@style/textStyle"
+                android:textColor="#FF0000"
                 android:layout_gravity="left"
+                android:maxLength="20"
                 android:text="change" />
 
             <TextView

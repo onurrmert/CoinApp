@@ -33,5 +33,22 @@
         android:id="@+id/coinDatailFragment"
         android:name="com.example.coinapp.View.CoinDatailFragment"
         android:label="fragment_coin_datail"
-        tools:layout="@layout/fragment_coin_datail" />
+        tools:layout="@layout/fragment_coin_datail" >
+        <argument
+            android:name="Symbol"
+            app:argType="string" />
+        <argument
+            android:name="BaseAsset"
+            app:argType="string" />
+        <argument android:name="PriceUsd"
+            app:argType="string" />
+        <argument android:name="PriceEur"
+            app:argType="string" />
+        <argument
+            android:name="Change"
+            app:argType="string" />
+        <argument
+            android:name="UpdateAt"
+            app:argType="string" />
+    </dialog>
 </navigation>

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.coinapp.Adapter.MainAdapter
 import com.example.coinapp.Model.MarketsItem
+import com.example.coinapp.Util.InternetControl
 import com.example.coinapp.ViewModel.MainViewModel
 import com.example.coinapp.databinding.FragmentMainBinding
 
@@ -40,13 +41,22 @@ class MainFragment : Fragment() {
 
         swipe()
 
-        getCoin()
+        netControl()
+    }
+
+    private fun netControl(){
+        if (InternetControl.connectionControl(requireContext())){
+            getCoin()
+        }else{
+            Toast.makeText(requireContext(), "Check your internet connection!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun swipe(){
         binding.swipeRefresh.setOnRefreshListener {
+            Toast.makeText(requireContext(), "Wait...", Toast.LENGTH_SHORT).show()
             binding.swipeRefresh.isRefreshing = false
-            getCoin()
+            netControl()
         }
     }
 
@@ -57,7 +67,7 @@ class MainFragment : Fragment() {
         viewModel.coinList.observe(viewLifecycleOwner, Observer {
             if (it.size > 0){
                 initRecycler(it)
-                Toast.makeText(requireContext(),"Update at: " + it.get(0).updated_at.substring(0, 10), Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"Update at: " + it.get(0).updated_at.substring(0, 10), Toast.LENGTH_SHORT).show()
                 binding.progressBar.visibility = View.GONE
             }else{
                 binding.progressBar.visibility = View.VISIBLE

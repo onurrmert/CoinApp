@@ -20,6 +20,5 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:maxLength">9</item>
     </style>
 </resources>
