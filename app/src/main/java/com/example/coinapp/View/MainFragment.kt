@@ -5,8 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.coinapp.R
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.coinapp.Adapter.MainAdapter
+import com.example.coinapp.Model.MarketsItem
 import com.example.coinapp.databinding.FragmentMainBinding
+import com.onurmert.retro4fitt.Retrofit1.ApiClient
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
 
@@ -28,5 +35,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+
+    private fun initRecycler(coinList : List<MarketsItem>){
+        val list = ArrayList<MarketsItem>(coinList)
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recyclerView.adapter = MainAdapter(list)
     }
 }
