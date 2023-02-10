@@ -7,8 +7,6 @@ data class MarketsItem(
     val symbol: String = "",
     @SerializedName("change_24h")
     val changeH: Double = 0.0,
-    @SerializedName("created_at")
-    val createdAt: String = "",
     @SerializedName("quote")
     val quote: Quote,
     @SerializedName("base_asset")
@@ -16,5 +14,7 @@ data class MarketsItem(
     @SerializedName("price")
     val price: Double = 0.0,
     @SerializedName("quote_asset")
-    val quoteAsset: String = ""
+    val quoteAsset: String = "",
+    @SerializedName("updated_at")
+    val updated_at : String
 )

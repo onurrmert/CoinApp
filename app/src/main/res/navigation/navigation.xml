@@ -24,5 +24,14 @@
         android:id="@+id/mainFragment"
         android:name="com.example.coinapp.View.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_coinDatailFragment"
+            app:destination="@id/coinDatailFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/coinDatailFragment"
+        android:name="com.example.coinapp.View.CoinDatailFragment"
+        android:label="fragment_coin_datail"
+        tools:layout="@layout/fragment_coin_datail" />
 </navigation>

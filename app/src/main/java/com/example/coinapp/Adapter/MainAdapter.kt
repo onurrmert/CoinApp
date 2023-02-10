@@ -4,10 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coinapp.Model.CoinModel
 import com.example.coinapp.Model.MarketsItem
 import com.example.coinapp.R
+import com.example.coinapp.View.MainFragmentDirections
 import com.example.coinapp.databinding.RecyclerRowBinding
 
 class MainAdapter(val coinList : ArrayList<MarketsItem>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
@@ -31,8 +32,28 @@ class MainAdapter(val coinList : ArrayList<MarketsItem>) : RecyclerView.Adapter<
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+
         holder.binding.textSymbol.setText(coinList.get(position).symbol)
+
         holder.binding.textBaseAsset.setText(coinList.get(position).baseAsset)
-        holder.binding.textPrice.setText(coinList.get(position).price.toString() + "$")
+
+        holder.binding.textPrice.setText("$" + coinList.get(position).price.toString())
+
+        holder.binding.recylerRow.setOnClickListener {
+            direction(it)
+        }
+
+        holder.binding.textBaseAsset.setOnClickListener {
+            direction(it)
+        }
+
+        holder.binding.textSymbol.setOnClickListener {
+            direction(it)
+        }
     }
+
+    private fun direction(view: View){
+        val direction1 = MainFragmentDirections.actionMainFragmentToCoinDatailFragment()
+        Navigation.findNavController(view).navigate(direction1)
+     }
 }
