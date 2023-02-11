@@ -1,32 +1,31 @@
 package com.example.coinapp.ViewModel
 
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coinapp.Model.MarketsItem
-import com.onurmert.retro4fitt.Retrofit1.ApiClient
+import com.example.coinapp.Retrofit.RetrofitService
+import com.onurmert.retro4fitt.Retrofit1.RetrofitModule
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val retrofitService: RetrofitService) : ViewModel() {
 
-    val coinList = MutableLiveData<List<MarketsItem>>()
+    val coinList1 = MutableLiveData<List<MarketsItem>>()
 
-    fun getCoinList(){
+    fun getCoinList(lifecycleOwner: LifecycleOwner){
 
         viewModelScope.launch {
-            if (ApiClient.getCoinApi().getCoin().isSuccessful){
-                if (ApiClient.getCoinApi().getCoin().body() != null){
-                    if (ApiClient.getCoinApi().getCoin().body()!!.markets!!.size > 0){
-                        coinList.value = ApiClient.getCoinApi().getCoin().body()!!.markets!!
-                    }else{
-                        println("list is empty")
-                    }
-                }else{
-                    println("body null")
-                }
-            }else{
-                println("is niot succesful")
-            }
+
+            retrofitService.getCoinList()
+
+            retrofitService.coinList.observe(lifecycleOwner, Observer {
+                coinList1.value = it
+            })
         }
     }
 }

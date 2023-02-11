@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import com.example.coinapp.R
 import com.example.coinapp.databinding.FragmentCoinDatailBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CoinDatailFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding : FragmentCoinDatailBinding

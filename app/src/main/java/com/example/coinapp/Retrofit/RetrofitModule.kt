@@ -2,14 +2,23 @@ package com.onurmert.retro4fitt.Retrofit1
 
 import com.example.coinapp.Util.Constant
 import com.google.gson.GsonBuilder
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
-class ApiClient (){
+@Module
+@InstallIn(SingletonComponent::class)
+class RetrofitModule (){
 
-    private fun getRetrofit() : Retrofit{
+    @Singleton
+    @Provides
+    fun getRetrofit() : Retrofit{
 
         val client = OkHttpClient.Builder()
             .retryOnConnectionFailure(true)
@@ -26,9 +35,9 @@ class ApiClient (){
         return retrofit
     }
 
-    companion object{
-        fun getCoinApi() : ICoinApi{
-            return ApiClient().getRetrofit().create(ICoinApi::class.java)
-        }
+    @Singleton
+    @Provides
+    fun getCoinApi() : ICoinApi{
+        return RetrofitModule().getRetrofit().create(ICoinApi::class.java)
     }
 }

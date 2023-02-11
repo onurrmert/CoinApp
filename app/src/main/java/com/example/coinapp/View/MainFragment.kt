@@ -14,12 +14,16 @@ import com.example.coinapp.Model.MarketsItem
 import com.example.coinapp.Util.InternetControl
 import com.example.coinapp.ViewModel.MainViewModel
 import com.example.coinapp.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private lateinit var binding : FragmentMainBinding
 
-    private lateinit var viewModel: MainViewModel
+    val viewModel by lazy {
+        ViewModelProvider(this, defaultViewModelProviderFactory).get(MainViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +40,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         swipe()
 
@@ -62,9 +64,9 @@ class MainFragment : Fragment() {
 
     private fun getCoin(){
 
-        viewModel.getCoinList()
+        viewModel.getCoinList(viewLifecycleOwner)
 
-        viewModel.coinList.observe(viewLifecycleOwner, Observer {
+        viewModel.coinList1.observe(viewLifecycleOwner, Observer {
             if (it.size > 0){
                 initRecycler(it)
                 binding.progressBar.visibility = View.GONE
