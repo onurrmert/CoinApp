@@ -13,7 +13,6 @@ class RetrofitService @Inject constructor(private val iCoinApi: ICoinApi) {
     val coinList = MutableLiveData<List<MarketsItem>>()
 
     fun getCoinList(){
-
         CoroutineScope(Dispatchers.Main).launch {
             if (iCoinApi.getCoin().isSuccessful){
                 if (iCoinApi.getCoin().body() != null){

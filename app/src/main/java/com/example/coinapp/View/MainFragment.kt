@@ -21,7 +21,7 @@ class MainFragment : Fragment() {
 
     private lateinit var binding : FragmentMainBinding
 
-    val viewModel by lazy {
+    private val viewModel by lazy {
         ViewModelProvider(this, defaultViewModelProviderFactory).get(MainViewModel::class.java)
     }
 
@@ -77,7 +77,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initRecycler(coinList : List<MarketsItem>){
-        val list = ArrayList<MarketsItem>(coinList)
+        val list = ArrayList<MarketsItem>(coinList.sortedByDescending { it.price })
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerView.adapter = MainAdapter(list)
     }

@@ -2,11 +2,9 @@ package com.example.coinapp.View
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.coinapp.R
 import com.example.coinapp.databinding.FragmentCoinDatailBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +16,6 @@ class CoinDatailFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -46,7 +43,7 @@ class CoinDatailFragment : BottomSheetDialogFragment() {
 
         binding.textChange.text =  "Change 24H: " + getCoin().Change
 
-        binding.textUpdate.text =  "Update: " + getCoin().UpdateAt.substring(11, 19)
+        binding.textUpdate.text =  "Update Date: " + getCoin().UpdateAt.substring(11, 19)
 
         binding.textSymbol.text = getCoin().Symbol
     }

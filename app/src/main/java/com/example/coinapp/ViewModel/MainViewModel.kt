@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coinapp.Model.MarketsItem
 import com.example.coinapp.Retrofit.RetrofitService
-import com.onurmert.retro4fitt.Retrofit1.RetrofitModule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

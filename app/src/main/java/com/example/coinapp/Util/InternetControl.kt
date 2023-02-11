@@ -4,7 +4,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 
 class InternetControl {
+
     companion object{
+
         fun connectionControl(context: Context) : Boolean{
             val manager =
                 context.applicationContext
