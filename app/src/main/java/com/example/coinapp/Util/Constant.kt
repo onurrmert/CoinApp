@@ -1,6 +1,6 @@
 package com.example.coinapp.Util
 
-class Contant {
+class Constant {
 
     companion object{
         const val BaseUrl = "https://cryptingup.com/"

@@ -1,6 +1,6 @@
 package com.onurmert.retro4fitt.Retrofit1
 
-import com.example.coinapp.Util.Contant
+import com.example.coinapp.Util.Constant
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -19,7 +19,7 @@ class ApiClient (){
         val gson = GsonBuilder().setLenient().create()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(Contant.BaseUrl)
+            .baseUrl(Constant.BaseUrl)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
